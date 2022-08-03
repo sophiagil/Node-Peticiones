@@ -1,0 +1,135 @@
+header .container{
+	background-color:  linear-gradient(
+		0deg,
+		rgba(244, 238, 245, 0.9),
+		rgba(244, 238, 245, 0.9));
+	/*position: fixed;*/
+	width: 100%;
+	height: 30vh;
+	transition: .3s ease-in;
+    overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+header .logo{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+	padding-bottom: 2%;
+}
+
+header .logo a{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.6em;
+	text-align: left;
+	color: #9F330C;
+	margin: 0;
+}
+
+header nav {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+    margin: 0;
+    height: auto;
+	text-align: center;
+	justify-content: space-between;
+}
+
+.text-a{
+	font-size: 0.9em;
+	color:#4d4646;
+	text-decoration: none;
+	text-align: center;
+	align-items: center;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+	
+}
+
+.text-a:hover{
+	color:#FA4816;
+}
+
+/*----------------SECCIÓN FOOTER-------------------*/
+
+footer{
+	background-color: #F4EEF5;
+}
+
+footer p{
+	margin:0;
+	padding: 12px;
+	color: rgb(100,100,100);
+	text-align: center;
+}
+
+footer.container{
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+/*----------------VERSIÓN DESKTOP FRIENDLY------------------*/
+
+@media(min-width: 720px){
+
+	header .container{
+		background-color:  linear-gradient(
+			0deg,
+			rgba(244, 238, 245, 0.9),
+			rgba(244, 238, 245, 0.9));
+		/*position: fixed;*/
+		width: 100%;
+		height: 20vh;
+		transition: .3s ease-in;
+		overflow: hidden;
+	}
+	
+	header .logo{
+		display:flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width: 50%;
+		align-items: left;
+		margin: 0;
+		padding-bottom: 50px;
+	}
+	
+	header .logo-link{
+		font-size: 1.5em;
+	}
+
+	/*header .menu-bar .btn_menu{
+		display: none;
+	}*/
+
+	header nav .menu-bar{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 76%;
+		padding: 0 2px;
+	}
+
+	.text-a{
+		text-align: center;
+		font-size: 1.2rem;
+		color: #4d4646;
+		text-decoration: none;
+		margin: 0;
+	}
+	
+	.text-a:hover{
+		color:#FA4816;
+	}
+}
+
