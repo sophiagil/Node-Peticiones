@@ -4,10 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+require('dotenv').config();
+var pool= require('./models/db');
 var session = require('express-session');
 
-//var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
 
 var app = express();
@@ -28,7 +30,85 @@ app.use(session({
   saveUninitialized: true
 }));
 
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+//Select
+
+//pool.query('select * from administradores').then(function (resultados) {
+//  console.log(resultados)
+//});
+
+//Insert
+
+//var obj = {
+  //Nombres: 'Sofia',
+  //Apellidos: 'Gil',
+  //Edad: 37,
+  //Puesto: 'Gerente',
+  //Rol: 'Administrador Web',
+  //Mail: 'sophiagil84@gmail.com',
+  //Celular: '114443333',
+  //Direccion: 'Av. 6 S/N',
+  //CP: '5282',
+  //Pais_Residencia: 'Argentina',
+  //Estado_Activo: '1'
+//};
+
+//pool.query('insert into administradores set ?', [obj]).then(function (resultados) {
+  //console.log(resultados)
+//});
+
+// update
+
+//var id= 5;
+//var obj= {
+  //Nombres:'Leandro',
+  //Apellidos: 'Remon',
+  //Edad: '44',
+  //Puesto: 'Gerente de Ventas',
+  //Rol: 'Ejecutivo de cuentas',
+  //Mail: 'leandroremon@gmail.com',
+  //Celular: '113332222',
+  //Direccion: 'Av. 6 S/N',
+  //CP: 5282,
+  //Pais_Residencia: 'Argentina',
+  //Estado_Activo: 1
+//};
+
+//pool.query('update administradores set ? where id_admin= ?', [obj, id]).then (function (resultados) {
+  //console.log(resultados)
+//});
+
+// delete
+
+//var id= 2;
+//pool.query('delete from administradores where id_admin= ?', [id]).then(function (resultados) {
+  //console.log(resultados)
+//});
+
+// update 2
+
+//var id= 5;
+//var obj= {
+  //Nombres:'Leandro',
+  //Apellidos: 'Remon',
+  //Edad: '44',
+  //Puesto: 'Gerente de Marketing',
+  //Rol: 'Marketing Digital',
+  //Mail: 'leandroremon@gmail.com',
+  //Celular: '113332222',
+  //Direccion: 'Av. 6 S/N',
+  //CP: '5282',
+  //Pais_Residencia: 'Argentina',
+  //Estado_Activo: '1'
+//};
+
+//pool.query('update administradores set ? where id_admin= ?', [obj, id]).then (function (resultados) {
+  //console.log(resultados)
+//});
+
+// Funciones
 
 app.get('/', function (req, res) {
   var conocido = Boolean(req.session.nombre);
