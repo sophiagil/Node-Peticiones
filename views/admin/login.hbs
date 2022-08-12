@@ -16,58 +16,79 @@
     
     <section>
         <div class="row g-0">
-            <div class="col-lg-7">
+            <div class="col-lg-7 w-60">
                 <div id="carousel-login" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="../../public/images/CarrouselLogin/login1.jpg" class="d-block w-100" alt="...">
+                        <img src="/images/CarrouselLogin/login1.jpg" class="d-block w-100 h-auto" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="../../public/images/CarrouselLogin/login2.jpg" class="d-block w-100" alt="...">
+                        <img src="/images/CarrouselLogin/login2.jpg" class="d-block w-100 h-auto" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="../../public/images/CarrouselLogin/login3.jpg" class="d-block w-100" alt="...">
+                        <img src="/images/CarrouselLogin/login3.jpg" class="d-block w-100 h-auto" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="../../public/images/CarrouselLogin/login4.jpg" class="d-block w-100" alt="...">
+                        <img src="/images/CarrouselLogin/login4.jpg" class="d-block w-100 h-auto" alt="...">
                       </div>
                 </div>
             </div>
         </div>
 
             <div class="col-lg-5 d-flex flex-column align-items-end min-vh-100">
-                <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 w-100 mb-auto">
-                    <img src="../../public/images/login.jpg" class="img-fluid w-10">
+                <div class="px-lg-5 pt-lg-4 pb-lg-0 w-100 mb-0">
+                    <img src="/images/login.png" class="img-fluid">
                 </div>
 
-            <div class="px-lg-5 py-lg-5 p-4 w-100 align-self-center">
+            <div class="px-lg-5 py-lg-5 p-5 w-100 align-self-center">
                 <h1 class="font-weigth-bold mb-5">Portal de Administrador Web</h1>
-                <form>
+
+                <form action="/admin/login" method="post">
                     <div class="mb-5">
                         <label for="username" class="form-label font-weigth-bold">Nombre de Usuario</label>
-                        <input type="username" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre de usuario" id="usuario">
-                        <div id="userhelp" class="form-text">¿Has olvidado tu nombre de usuario?</div>
+                        <input type="username" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre de usuario" name="Username" id="usuario">
+                        <div id="userhelp" class="form-text"><a class="text-decoration-none" href="#">¿Has olvidado tu nombre de usuario?</a></div>
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-5">
                         <label for="password" class="form-label font-weigth-bold">Contraseña</label>
-                        <input type="password" class="form-control bg-dark-x border-0" placeholder="Ingresa tu contraseña" id="contraseña">
-                        <div id="passwordhelp" class="form-text">¿Has olvidado tu contraseña?</div>
+                        <input type="password" class="form-control bg-dark-x border-0" placeholder="Ingresa tu contraseña" name="Password" id="contraseña">
+                        <div id="passwordhelp" class="form-text"><a class="text-decoration-none" href="#">¿Has olvidado tu contraseña?</a></div>
                     </div>
 
-                    <div class="mb-5 form-check">
-                        <input type="checkbox" class="form-check-input"  id="check">
-                        <label class="form-check-label" for="check">Check me out</label>
-                    </div>
                     <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
                     <button type="submit" class="btn btn-secondary w-100 mt-3">Registrarse</button>
                 </form>
+
+                <div class="modal" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Problemas con Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Aceptar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{#if error}}
+                  <p class="text-center font-weigth-bold mt-5">No pudo iniciar sesión de Administrador. Verifique su usuario y/o contraseña</p>
+                {{/if}}
             </div>
-        </div>
-    </section>
+          </div>
+      </section>
+
+      
 
     <footer>
-        <div class="col-lg-16 pb-lg-3">
+        <div class="col-lg-16 pb-lg-3 pt-lg-4 bg-primary bg-gradient text-white">
             <p class="text-center">&copy;Iguamkú 2022. Creado por Sofia Gil</p>
          </div>
     </footer>

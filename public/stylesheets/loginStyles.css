@@ -8,18 +8,13 @@ body {
     line-height: initial;
 }
 
-.form-text {
-    font-size: 0.3rem;
+.form-text a {
+    text-decoration: none;
+    
 }
 
-.img-fluid {
-    width: 100px;
-    max-width: 100%
-    height: auto;
-}
-
-.carousel-item {
-    max-width: 100%;
+.carousel-inner {
+    max-width: 50%;
     height: 90vh;
-
 }
+

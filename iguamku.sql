@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-08-2022 a las 01:15:28
+-- Tiempo de generación: 12-08-2022 a las 14:05:27
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -64,25 +64,23 @@ CREATE TABLE IF NOT EXISTS `administradores` (
   `Nombres` varchar(50) NOT NULL,
   `Apellidos` varchar(50) NOT NULL,
   `Edad` int(2) NOT NULL,
-  `Puesto` varchar(50) NOT NULL,
-  `Rol` varchar(50) NOT NULL,
   `Mail` varchar(40) NOT NULL,
   `Celular` varchar(20) NOT NULL,
-  `Dirección` varchar(50) NOT NULL,
-  `CP` int(6) NOT NULL,
-  `Pais Residencia` varchar(20) NOT NULL,
-  `Estado Activo` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `id_rol` int(11) NOT NULL,
+  `Username` varchar(250) NOT NULL,
+  `Password` varchar(250) NOT NULL,
+  PRIMARY KEY (`id_admin`),
+  KEY `id_rol` (`id_rol`),
+  KEY `id_rol_2` (`id_rol`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`id_admin`, `Nombres`, `Apellidos`, `Edad`, `Puesto`, `Rol`, `Mail`, `Celular`, `Dirección`, `CP`, `Pais Residencia`, `Estado Activo`) VALUES
-(1, 'Lorenzo Gabriel', 'Luzziani', 43, 'Web Master Senior', 'Administrador Web', 'luzziani.loren77@gmail.com', '1123418048', 'Las Flores 2147', 1875, 'Argentina', 1),
-(2, 'Antonella Leticia', 'Maldonado Farias', 27, 'Diseñador Grafico', 'Editor Frontend', 'antobellacorta@gmail.com', '254821731247', 'Miraflores 4566 T2 P7 D1A', 1007, 'Guatemala', 1),
-(3, 'Lucas', 'Sabino Diaz', 31, 'Supervisor de Seguridad Informática', 'Supervisor Sistema', 'lucas.sabino7@live.com', '1177549878', 'Suipacha 234', 1209, 'Argentina', 1);
+INSERT INTO `administradores` (`id_admin`, `Nombres`, `Apellidos`, `Edad`, `Mail`, `Celular`, `id_rol`, `Username`, `Password`) VALUES
+(10, 'Sofia Laura', 'Gil', 37, 'sophiagil84@gmail.com', '+54 9 11 45789855', 3, 'sophiagil84@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+(11, 'Leandro', 'Remon', 44, 'leandroraulremon@gmail.com', '+54 9 11 45769878', 5, 'leandroraulremon@gmail.com', 'f55f56e02293f067b6fa13024a17a580');
 
 -- --------------------------------------------------------
 
@@ -125,6 +123,30 @@ CREATE TABLE IF NOT EXISTS `inscripciones` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rolesadmin`
+--
+
+DROP TABLE IF EXISTS `rolesadmin`;
+CREATE TABLE IF NOT EXISTS `rolesadmin` (
+  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
+  `Rol` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_rol`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `rolesadmin`
+--
+
+INSERT INTO `rolesadmin` (`id_rol`, `Rol`) VALUES
+(1, 'Web Master'),
+(2, 'Diseñador Web'),
+(3, 'Programador Developer'),
+(4, 'Administrador BD'),
+(5, 'Especialista Marketing Digital');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -138,8 +160,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Nacionalidad` varchar(40) NOT NULL,
   `Mail` varchar(40) NOT NULL,
   `Celular` varchar(16) NOT NULL,
-  `Username` varchar(50) NOT NULL,
-  `Contrasena` varchar(10) NOT NULL,
+  `Username` varchar(250) NOT NULL,
+  `Contrasena` varchar(250) NOT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -155,6 +177,12 @@ INSERT INTO `usuarios` (`id_usuario`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nac
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  ADD CONSTRAINT `administradores_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rolesadmin` (`id_rol`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `inscripciones`
