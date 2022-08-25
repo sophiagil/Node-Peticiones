@@ -4,7 +4,7 @@ var administradoresModel = require('./../../models/administradoresModel');
 
 /* GET login. */
 router.get('/', function(req, res, next) {
-  res.render('./../views/admin/login',{
+  res.render('admin/login',{
    /* layout: 'admin/layout'*/
   });
 });
@@ -23,8 +23,8 @@ try {
 
     if (data != undefined) {
       req.session.id_admin = data.id;
-      req.session.name = data.Username;
-      res.redirect('./../../views/admin/panelAdmin'); //creo que el error de redireccionamiento es por esta linea
+      req.session.nombre = data.Username;
+      res.redirect('admin/panelAdmin'); 
     } else {
       res.render('admin/login', {
         error: true
@@ -34,6 +34,15 @@ try {
   window.alert(error);
   }
 });
+
+/* Logout */
+
+router.get('/logout',function (req, res, next) {
+  req.session.destroy();
+  res.render('admin/login', {
+  });
+});
+
 
 module.exports = router;
 

@@ -18,3 +18,7 @@ body {
     height: 90vh;
 }
 
+#cbox1 label {
+    padding-top: 10px;
+    font-size: 1rem;
+}

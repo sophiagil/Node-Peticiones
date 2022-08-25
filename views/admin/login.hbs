@@ -10,9 +10,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href="../../public/stylesheets/loginStyles.css">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-  <body class=".bg-light.bg-gradient">
+  <body class="bg-light bg-gradient">
     
     <section>
         <div class="row g-0">
@@ -42,62 +44,85 @@
 
             <div class="px-lg-5 py-lg-5 p-5 w-100 align-self-center">
                 <h1 class="font-weigth-bold mb-5">Portal de Administrador Web</h1>
+                {{!-- <h3> datos: sophiagil84@gmail.com</h3>
+                <h3>pass: 1234</h3> --}}
 
                 <form action="/admin/login" method="post">
                     <div class="mb-5">
                         <label for="username" class="form-label font-weigth-bold">Nombre de Usuario</label>
                         <input type="username" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre de usuario" name="Username" id="usuario">
-                        <div id="userhelp" class="form-text"><a class="text-decoration-none" href="#">¿Has olvidado tu nombre de usuario?</a></div>
                     </div>
 
                     <div class="mb-5">
                         <label for="password" class="form-label font-weigth-bold">Contraseña</label>
-                        <input type="password" class="form-control bg-dark-x border-0" placeholder="Ingresa tu contraseña" name="Password" id="contraseña">
-                        <div id="passwordhelp" class="form-text"><a class="text-decoration-none" href="#">¿Has olvidado tu contraseña?</a></div>
+                        <input type="password" class="form-control bg-dark-x border-0" placeholder="Ingresa tu contraseña" name="Password" id="contraseña"><br/>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="mostrar()">   
+                        <label class="form-check-label" for="flexCheckDefault"> Mostrar Contraseña</label>
+                    </div>
+
+                    <div class="mb-5">
+                      <div id="passwordhelp" class="form-text"><a class="text-decoration-none" href="#">¿Has olvidado tu usuario y/o contraseña?</a></div>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
                     <button type="submit" class="btn btn-secondary w-100 mt-3">Registrarse</button>
                 </form>
 
-                <div class="modal" tabindex="-1" role="dialog">
-                  <div class="modal-dialog" role="document">
+                <div class="modal fade" id="loginError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title">Problemas con Login</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        ...
+                        No se pudo iniciar sesión
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Aceptar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                {{#if error}}
-                  <p class="text-center font-weigth-bold mt-5">No pudo iniciar sesión de Administrador. Verifique su usuario y/o contraseña</p>
-                {{/if}}
             </div>
           </div>
       </section>
 
-      
+      <script type="text/javascript">
+      function mostrar() {
+        var show = document.getElementById("Show");
+
+        if (show.type == "password") {
+          show.type = "text";
+        } else {
+          show.type = "password";
+        }
+      }
+    </script>
+
+      {{#if error}}
+      <script>
+        const myModal = new bootstrap.Modal(document.getElementById('loginError'))
+        myModal.show();
+      </script>
+      {{/if}}
+    
 
     <footer>
         <div class="col-lg-16 pb-lg-3 pt-lg-4 bg-primary bg-gradient text-white">
             <p class="text-center">&copy;Iguamkú 2022. Creado por Sofia Gil</p>
          </div>
     </footer>
+
+   
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <!-- Popper.js, first, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-   
+
+    
+
     {{{body}}}
 
   </body>

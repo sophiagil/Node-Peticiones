@@ -11,6 +11,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
+var panelAdminRouter = require('./routes/admin/panelAdmin');
 
 var app = express();
 
@@ -24,15 +25,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/admin/login', loginRouter);
+app.use('/admin/panelAdmin', panelAdminRouter);
+
 app.use(session({
   secret: 'claveejemplo333',
   resave: false,
   saveUninitialized: true
 }));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/admin/login', loginRouter);
+
 
 
 // catch 404 and forward to error handler

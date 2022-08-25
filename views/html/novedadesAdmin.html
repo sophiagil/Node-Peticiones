@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AppAdmin | Web Master</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../../public/stylesheets/panelStyle.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+
+
+<body class="d-flex flex-column h-100 bg-light">
+
+    <header>
+        <nav class="navbar navbar-expand-md bg-primary text-white">
+            <div class="container-fluid ">
+                <a class="navbar-brand font-weigth-bold" href="index.html">AppAdmin</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active font-weigth-bold" aria-current="page" href="./panelAdmin.html">Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="paginasAdmin.html">Páginas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="novedadesAdmin.html">Novedades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="usuariosAdmin.html">Usuarios</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                        <button class="btn btn-sm btn-outline-light  px-lg-4" type="button">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="panel">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3><img src="./../../public/images/Icons/configuracion.svg"> Novedades | <small>Bienvenido
+                            {{usuario}} !</small></h3>
+                </div>
+                <div class="col-md-2">
+                    <div class="dropdown-btn">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Administrar Contenido
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="/views/admin/paginasAdmin.html">Administrar Páginas</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Administrar Novedades</a></li>
+                            <li><a class="dropdown-item" href="#">Administrar Usuarios</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="breadcrumb">
+        <div class="container">
+            <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a>Panel de Control</a></li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a  class="list-group-item list-group-item-action active" aria-current="true">
+                            <img src="./../../public/images/Icons/configsf.svg">Novedades</a>
+                        <a href="seccionesAdmin.html" class="list-group-item list-group-item-action">
+                            <img src="./../../public/images/Icons/paginas.svg"> Páginas</a>
+                        <a href="updateAdmin.html" class="list-group-item list-group-item-action">
+                            <img src="./../../public/images/Icons/usuarios.svg"> Usuarios</a>
+                        <a href="calendarioAdmin.html" class="list-group-item list-group-item-action">
+                            <img src="./../../public/images/Icons/administradores.svg">Administradores</a>
+                        <a href="calendarioAdmin.html" class="list-group-item list-group-item-action">
+                            <img src="./../../public/images/Icons/bd.svg">Gestión BD</a>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Vista Rápida</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="container">
+                                <div class="card">
+                                    <h2><img src="./../../public/images/Icons/alta.svg" class="card-img-top"
+                                            alt="..."> 33</h2>
+                                    <div class="card-body">
+                                        <p class="card-text">Alta</p>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <h2><img src="./../../public/images/Icons/modificacion.svg" class="card-img-top"
+                                            alt="..."> 33</h2>
+                                    <div class="card-body">
+                                        <p class="card-text">Modificación</p>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <h2><img src="./../../public/images/Icons/clear.svg " class="card-img-top"
+                                            alt="..."> 33</h2>
+                                    <div class="card-body">
+                                        <p class="card-text">Eliminación</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Últimas Novedades de: <span>Páginas</span></h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-hover">
+                                <tr>
+                                    <th>Objeto</th>
+                                    <th>Acción</th>
+                                    <th>Registro</th>
+                                    <th>Autor</th>
+                                </tr>
+                                <tr>
+                                    <td>Página Contacto</td>
+                                    <td>Alta de registro</td>
+                                    <td>Sep 12, 2022</td>
+                                    <td>Sofía Gil</td>
+                                </tr>
+                                <tr>
+                                    <td>Página Productos</td>
+                                    <td>Eliminación de registros</td>
+                                    <td>Oct 20, 2022</td>
+                                    <td>Sofía Gil</td>
+                                </tr>
+                                <tr>
+                                    <td>Página Inscripciones</td> 
+                                    <td>Alta de usuario</td>
+                                    <td>Oct 23, 2022</td>
+                                    <td>Sofía Gil</td>  
+                                </tr>
+                            </table>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+    </section>
+
+
+    <footer class="footer mt-auto px-1  bg-secondary text-white">
+        <div class="col-lg-16 pb-lg-1">
+            <p class="text-center pt-3">&copy;Iguamkú 2022. Creado por Sofia Gil</p>
+        </div>
+    </footer>
+
+
+
+    <!-- Popper.js, first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
