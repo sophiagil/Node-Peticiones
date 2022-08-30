@@ -4,14 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-require('dotenv').config();
-var pool= require('./models/bd');
-var session = require('express-session');
+require('dotenv').config(); //variables de entorno
+var session = require('express-session'); //variables de sesión 
 
+const { secureHeapUsed } = require('crypto');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
-var panelAdminRouter = require('./routes/admin/panelAdmin');
+var adminRouter = require('./routes/admin/panelAdmin');
 
 var app = express();
 
@@ -25,19 +25,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/admin/login', loginRouter);
-app.use('/admin/panelAdmin', panelAdminRouter);
-
 app.use(session({
-  secret: 'claveejemplo333',
+  secret: '1234',
+  cookie: { maxAge: null },
   resave: false,
   saveUninitialized: true
 }));
 
+secured = async (req,res,next) => {
+  try {
+    console.log(req.session.id_admin);
+    if (req.session.id_admin) {
+      next();
+    } else {
+      res.redirect('admin/login');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/admin/login', loginRouter);
+app.use('/admin/panelAdmin', secured, adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

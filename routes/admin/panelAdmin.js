@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/', function (req, res, next) {
     res.render('admin/panelAdmin', {
-    Username: req.session.nombre,
+    Usuario: req.session.nombre
     });
 });
 

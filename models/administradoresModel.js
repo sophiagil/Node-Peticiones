@@ -1,5 +1,5 @@
-var pool = require('./bd');
-var md5 = require('md5');
+var pool = require('./bd'); //llama a la base de datos
+var md5 = require('md5'); //encripta la clave en la bd
 
 async function getUserByUsernameAndPassword(user, password) {
     try {

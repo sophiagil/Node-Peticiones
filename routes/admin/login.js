@@ -5,7 +5,6 @@ var administradoresModel = require('./../../models/administradoresModel');
 /* GET login. */
 router.get('/', function(req, res, next) {
   res.render('admin/login',{
-   /* layout: 'admin/layout'*/
   });
 });
 
@@ -23,15 +22,15 @@ try {
 
     if (data != undefined) {
       req.session.id_admin = data.id;
-      req.session.nombre = data.Username;
-      res.redirect('admin/panelAdmin'); 
+      req.session.nombre = data.Nombre;
+      res.redirect('./../admin/panelAdmin'); 
     } else {
       res.render('admin/login', {
         error: true
       });
     }
   } catch (error) {
-  window.alert(error);
+  console.log(error);
   }
 });
 
